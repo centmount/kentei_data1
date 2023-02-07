@@ -34,5 +34,5 @@ if files and button:
         plt.show()
         buf = BytesIO()
         fig.savefig(buf, format="png")
-        st.image(buf, width=100)
+        st.image(buf, width=300)
     st.write('処理を実行しました')
