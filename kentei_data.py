@@ -33,9 +33,11 @@ if files and button:
             date = df.loc[0, '登録日時'][2:12]
             df_color = round(df.groupby('解答色').count()['番組識別文字列'] / len(df), 4) * 100
             df_color = pd.DataFrame(df_color)
-            df_color.index = ['青', '赤', '緑']
-            df_color.columns = [category + '  ' + date]
-            st.dataframe(df_color.T.style.format('{:.2f}'))
+            df_color['count'] = df.groupby('解答色').count()['番組識別文字列']
+            df_color.reset_index(inplace=True, drop=True)
+            df_color.index = ['青', '赤','緑']
+            df_color.rename(columns={'番組識別文字列': f'{category} {date}'}, inplace=True)
+            st.dataframe(df_color.T.style.format('{:.0f}'))
             fig = plt.figure(figsize=(3,3))
             labels = ["青", "赤", "緑"]
             colors = ["blue", "red", "green"]
