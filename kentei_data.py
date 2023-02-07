@@ -23,7 +23,7 @@ if files and button:
         df_color.index = ['青', '赤', '緑']
         df_color.columns = [category + '  ' + date]
         st.dataframe(df_color.T.style.format('{:.2f}'))
-        fig = plt.figure(figsize=(8,8))
+        fig = plt.figure(figsize=(4,4))
         labels = ["青", "赤", "緑"]
         colors = ["blue", "red", "green"]
         textprops = textprops = {'fontsize':16}
@@ -32,4 +32,4 @@ if files and button:
         plt.title(category + '  ' + date, fontsize=20)
         plt.show()
         st.pyplot(fig)
-        st.write('処理を実行しました')
+    st.write('処理を実行しました')
