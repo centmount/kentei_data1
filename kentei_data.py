@@ -20,7 +20,7 @@ if files and button:
             df = pd.read_csv(file, encoding='shift-jis')
             category = df.loc[0, '名称']
             date = df.loc[0, '登録日時'][2:12]
-            df_color = round(df.groupby('解答色').count() / df['解答色'].count(), 4) * 100
+            df_color = round(df.groupby('解答色').count()['番組識別文字列'] / len(df), 4) * 100
             df_color = pd.DataFrame(df_color)
             df_color.index = ['青', '赤', '緑']
             df_color.columns = [category + '  ' + date]
