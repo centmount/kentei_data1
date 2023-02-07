@@ -3,6 +3,7 @@ import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 import japanize_matplotlib
+import numpy as np
 
 st.title('検定コーナーの正解率を取得')
 st.write('ファイルをアップロードして、解答の割合を表示します')
@@ -26,7 +27,8 @@ if files and button:
         labels = ["青", "赤", "緑"]
         colors = ["blue", "red", "green"]
         textprops = textprops = {'fontsize':16}
-        plt.pie(df_color[df_color.columns], labels=labels, colors=colors, counterclock=False, startangle=90, autopct="%.2f%%", textprops=textprops)
+        x = df_color.to_numpy().reshape(-1)
+        plt.pie(x, labels=labels, colors=colors, counterclock=False, startangle=90, autopct="%.2f%%", textprops=textprops)
         plt.title(category + '  ' + date, fontsize=20)
         plt.show()
         st.pyplot(fig)
