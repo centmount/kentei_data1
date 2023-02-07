@@ -42,7 +42,7 @@ if files and button:
             labels = ["青", "赤", "緑"]
             colors = ["blue", "red", "green"]
             textprops = textprops = {'fontsize':8}
-            x = df_color.to_numpy().reshape(-1)
+            x = df_color.iloc[:,0].to_numpy().reshape(-1)
             plt.pie(x, labels=labels, colors=colors, counterclock=False, startangle=90, autopct="%.2f%%", textprops=textprops)
             plt.title(category + '  ' + date, fontsize=10)
             plt.show()
