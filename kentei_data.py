@@ -26,7 +26,7 @@ if files and button:
         labels = ["青", "赤", "緑"]
         colors = ["blue", "red", "green"]
         textprops = textprops = {'fontsize':16}
-        plt.pie(list(df_color), labels=labels, colors=colors, counterclock=False, startangle=90, autopct="%.2f%%", textprops=textprops)
+        plt.pie(df_color[df_color.columns], labels=labels, colors=colors, counterclock=False, startangle=90, autopct="%.2f%%", textprops=textprops)
         plt.title(category + '  ' + date, fontsize=20)
         plt.show()
         st.pyplot(fig)
