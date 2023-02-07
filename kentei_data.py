@@ -21,12 +21,13 @@ if button:
         df_color = pd.DataFrame(df_color)
         df_color.index = ['青', '赤', '緑']
         df_color.columns = [category + '  ' + date]
+        pd.options.display.float_format = '{:.2f}'.format
         st.dataframe(df_color.T)
         fig = plt.figure(figsize=(8,8))
         labels = ["青", "赤", "緑"]
         colors = ["blue", "red", "green"]
         textprops = textprops = {'fontsize':16}
-        plt.pie(df_color, labels=labels, colors=colors, counterclock=False, startangle=90, autopct="%.2f%%", textprops=textprops)
+        plt.pie(list(df_color), labels=labels, colors=colors, counterclock=False, startangle=90, autopct="%.2f%%", textprops=textprops)
         plt.title(category + '  ' + date, fontsize=20)
         plt.show()
         st.pyplot(fig)
