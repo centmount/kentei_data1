@@ -12,7 +12,7 @@ st.write('複数のファイルをアップロードできます')
 
 button= st.button('処理を実行')
 
-if button:
+if files and button:
     for file in files:
         df = pd.read_csv(file, encoding='shift-jis')
         category = df.loc[0, '名称']
@@ -21,8 +21,7 @@ if button:
         df_color = pd.DataFrame(df_color)
         df_color.index = ['青', '赤', '緑']
         df_color.columns = [category + '  ' + date]
-        pd.options.display.float_format = '{:.2f}'.format
-        st.dataframe(df_color.T)
+        st.dataframe(df_color.T.style.format('{:.2f}'))
         fig = plt.figure(figsize=(8,8))
         labels = ["青", "赤", "緑"]
         colors = ["blue", "red", "green"]
