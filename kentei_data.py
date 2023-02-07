@@ -4,6 +4,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 import numpy as np
+from io import BytesIO
 
 st.title('検定コーナーの正解率を取得')
 st.write('ファイルをアップロードして、解答の割合を表示します')
@@ -31,5 +32,7 @@ if files and button:
         plt.pie(x, labels=labels, colors=colors, counterclock=False, startangle=90, autopct="%.2f%%", textprops=textprops)
         plt.title(category + '  ' + date, fontsize=10)
         plt.show()
-        st.pyplot(fig)
+        buf = BytesIO()
+        fig.savefig(buf, format="png")
+        st.image(buf, width=100)
     st.write('処理を実行しました')
