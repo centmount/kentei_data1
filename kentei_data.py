@@ -23,13 +23,13 @@ if files and button:
         df_color.index = ['青', '赤', '緑']
         df_color.columns = [category + '  ' + date]
         st.dataframe(df_color.T.style.format('{:.2f}'))
-        fig = plt.figure(figsize=(4,4))
+        fig = plt.figure(figsize=(3,3))
         labels = ["青", "赤", "緑"]
         colors = ["blue", "red", "green"]
-        textprops = textprops = {'fontsize':16}
+        textprops = textprops = {'fontsize':8}
         x = df_color.to_numpy().reshape(-1)
         plt.pie(x, labels=labels, colors=colors, counterclock=False, startangle=90, autopct="%.2f%%", textprops=textprops)
-        plt.title(category + '  ' + date, fontsize=20)
+        plt.title(category + '  ' + date, fontsize=10)
         plt.show()
         st.pyplot(fig)
     st.write('処理を実行しました')
