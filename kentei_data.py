@@ -6,6 +6,17 @@ import japanize_matplotlib
 import numpy as np
 from io import BytesIO
 
+# パスワードはstreamlitのシークレットに保存
+# パスワード入力
+def login():
+    value = st.sidebar.text_input('パスワードを入力してください:', type='password')
+    if value == st.secrets['password']:
+        st.sidebar.write('パスワードを確認しました！')
+    else:
+        st.stop()
+
+login()
+
 st.title('検定コーナーの正解率を取得')
 st.write('ファイルをアップロードして、解答の割合を表示します')
 
